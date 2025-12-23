@@ -147,17 +147,17 @@ const TaskList = () => {
       )}
 
       {/* Tasks List */}
-      <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200">
+      <div className="">
         {tasks.length === 0 ? (
           <div className="p-12 text-center">
             <h3 className="text-xl font-semibold text-gray-700 mb-2">No tasks yet</h3>
           </div>
         ) : (
-          <div className="divide-y divide-gray-100 ">
+          <div>
             {tasks.map((task) => (
               <div 
                 key={task._id} 
-                className={`p-6 hover:bg-gray-50 transition-colors shadow-xs mt-1`}
+                className={`p-6 hover:bg-gray-50 transition-colors border border-gray-300 rounded-xl mt-1`}
               >
                 <div className="flex flex-col justify-between items-start gap-4">
                   <div className="flex-1 min-w-0  w-full">
