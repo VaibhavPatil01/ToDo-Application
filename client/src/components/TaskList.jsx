@@ -150,9 +150,7 @@ const TaskList = () => {
       <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200">
         {tasks.length === 0 ? (
           <div className="p-12 text-center">
-            <div className="text-gray-400 text-6xl mb-4">📝</div>
             <h3 className="text-xl font-semibold text-gray-700 mb-2">No tasks yet</h3>
-            <p className="text-gray-500">Click "Add New Task" to create your first task!</p>
           </div>
         ) : (
           <div className="divide-y divide-gray-100">
