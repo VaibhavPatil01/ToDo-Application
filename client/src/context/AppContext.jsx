@@ -10,7 +10,7 @@ export const AppProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   
-  const backendUrl = import.meta.env.REACT_APP_API_URL || "http://localhost:3000";
+  const backendUrl = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
   const navigate = useNavigate();
 
