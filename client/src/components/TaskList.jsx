@@ -87,7 +87,7 @@ const TaskList = () => {
       <div className="mb-6 flex justify-center">
         <button
           onClick={() => setShowForm(!showForm)}
-          className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-semibold shadow-md"
+          className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-semibold shadow-md cursor-pointer"
         >
           {showForm ? "Cancel" : "Add New Task"}
         </button>
@@ -130,14 +130,14 @@ const TaskList = () => {
             <div className="flex gap-3 pt-2">
               <button
                 type="submit"
-                className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
+                className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium cursor-pointer"
               >
                 {editingTask ? "Update Task" : "Create Task"}
               </button>
               <button
                 type="button"
                 onClick={resetForm}
-                className="px-6 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors font-medium"
+                className="px-6 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors font-medium cursor-pointer"
               >
                 Cancel
               </button>
@@ -153,25 +153,23 @@ const TaskList = () => {
             <h3 className="text-xl font-semibold text-gray-700 mb-2">No tasks yet</h3>
           </div>
         ) : (
-          <div className="divide-y divide-gray-100">
+          <div className="divide-y divide-gray-100 ">
             {tasks.map((task) => (
               <div 
                 key={task._id} 
-                className={`p-6 hover:bg-gray-50 transition-colors ${
-                  task.status === 'completed' ? 'bg-green-50' : ''
-                }`}
+                className={`p-6 hover:bg-gray-50 transition-colors shadow-xs mt-1`}
               >
-                <div className="flex justify-between items-start gap-4">
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-3 mb-2">
-                      <h3 className={`text-lg font-semibold ${
+                <div className="flex flex-col justify-between items-start gap-4">
+                  <div className="flex-1 min-w-0  w-full">
+                    <div className="flex items-center justify-between  gap-3 mb-2">
+                      <h3 className={`text-xl font-semibold ${
                         task.status === 'completed' 
                           ? 'text-green-800 line-through' 
                           : 'text-gray-800'
                       }`}>
                         {task.title}
                       </h3>
-                      <span className={`px-3 py-1 text-xs font-semibold rounded-full ${
+                      <span className={`px-4 py-2 text-xs font-semibold rounded-full ${
                         task.status === 'completed' 
                           ? 'bg-green-100 text-green-800' 
                           : 'bg-yellow-100 text-yellow-800'
@@ -188,19 +186,12 @@ const TaskList = () => {
                       </p>
                     )}
                     
-                    <p className="text-xs text-gray-500">
-                      Created: {new Date(task.createdAt).toLocaleDateString('en-US', {
-                        year: 'numeric',
-                        month: 'short',
-                        day: 'numeric'
-                      })}
-                    </p>
                   </div>
 
                   <div className="flex gap-2 hrink-0">
                     <button
                       onClick={() => toggleComplete(task)}
-                      className={`px-4 py-2 rounded-lg font-medium text-sm transition-colors ${
+                      className={`px-4 py-2 rounded-lg font-medium text-sm cursor-pointer transition-colors ${
                         task.status === 'completed'
                           ? 'bg-gray-500 text-white hover:bg-gray-600'
                           : 'bg-green-500 text-white hover:bg-green-600'
@@ -211,14 +202,14 @@ const TaskList = () => {
                     
                     <button
                       onClick={() => handleEdit(task)}
-                      className="px-4 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 transition-colors text-sm font-medium"
+                      className="px-4 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 transition-colors text-sm font-medium cursor-pointer"
                     >
                       Edit
                     </button>
                     
                     <button
                       onClick={() => handleDelete(task._id)}
-                      className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors text-sm font-medium"
+                      className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors text-sm font-medium cursor-pointer"
                     >
                       Delete
                     </button>
@@ -235,8 +226,6 @@ const TaskList = () => {
         <div className="mt-6 text-center text-gray-600 text-sm">
           <p>
             Completed: {tasks.filter(t => t.status === 'completed').length} / {tasks.length}
-            <span className="mx-2">•</span>
-            Pending: {tasks.filter(t => t.status !== 'completed').length} / {tasks.length}
           </p>
         </div>
       )}
